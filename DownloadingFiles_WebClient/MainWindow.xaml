@@ -1,0 +1,45 @@
+﻿<Window x:Class="DownloadingFiles_WebClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DownloadingFiles_WebClient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition />
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.15*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Enter a link to the resource: " VerticalAlignment="Bottom" FontWeight="DemiBold"/>
+        <TextBox x:Name="urlTextBox" Grid.Column="1" Grid.ColumnSpan="2" Margin="5"/>
+
+        <Label Content="Enter destination: " Grid.Row="1" VerticalAlignment="Bottom" FontWeight="DemiBold"/>
+        <TextBox x:Name="destTextBox" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="5"/>
+
+        <Button Grid.Column="3" Grid.Row="1" Content=". . ." FontWeight="Bold" Background="White" Width="30" HorizontalAlignment="Left" Margin="5" Click="BrowseButton_Click"/>
+        <Button Content="Download" Click="DownloadButton_Click" FontWeight="DemiBold" Background="White" Grid.Row="2" HorizontalAlignment="Center" Padding="15 0" Margin="5" Grid.Column="1" Grid.ColumnSpan="2"/>
+
+        <Label Content="double click to open the file" Grid.Row="3" VerticalAlignment="Bottom" FontStyle="Italic" FontSize="10"/>
+        <ListBox x:Name="listBox" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" MouseDoubleClick="ListBox_MouseDoubleClick" DisplayMemberPath="Name"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ProgressBar Background="White" x:Name="percent" Height="10" Width="500"/>
+            <TextBox x:Name="progressTextBox" Text="{Binding ElementName=percent, Path=Value, StringFormat={}{0:0}%}" Margin="10,0,0,0"/>
+        </StackPanel>
+
+        <Button x:Name="cancel" Grid.Row="6" BorderBrush="Transparent" Foreground="red" FontWeight="Bold" Content="Cancel downloading" Background="White" Grid.ColumnSpan="2" HorizontalAlignment="Center" Padding="30 0" Grid.Column="1" Margin="6" Click="CancelDownloadingBtn_Click"/>
+    </Grid>
+</Window>
